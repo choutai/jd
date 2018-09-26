@@ -1,0 +1,138 @@
+// 导入公共样式
+@import 'base.less';
+html,
+body {
+    height: 100%;
+}
+
+// 头部区域
+#header {
+    // 伸缩布局
+    display: flex;
+    background-color: #f5f5f5;
+    height: 54px;
+    >a {
+        display: block; // 要加padding
+        padding: 10px;
+        width: 40px;
+        height: 40px; // 返回
+        &.icon-back {
+            // 背景定位
+            background-position: -20px 0;
+        } // 菜单
+        &.icon-menu {
+            background-position: -60px 0;
+        }
+    } // 表单
+    form {
+        // 占一份
+        flex: 1;
+        position: relative;
+        margin-top: 5px; // 放大镜
+        .icon-search {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            left: 7px;
+            top: 7px;
+            background-position: -60px -110px;
+        }
+        >input {
+            width: 100%;
+            height: 30px;
+            border-radius: 15px;
+            padding-left: 30px;
+        }
+    }
+}
+
+//主体区域
+#main {
+    // 伸缩布局
+    display: flex;
+    height: 100%; // 左边
+    padding-top: 54px;
+    .category-left {
+        width: 85px;
+        height: 100%;
+        overflow: hidden;
+        .swiper-container {
+            height: 100%;
+            .swiper-wrapper {
+                height: 100%;
+                .swiper-slide {
+                    // 内容高度还原
+                    height: auto;
+                    >ul {
+                        background-color: #f5f5f5;
+                        >li {
+                            &.active {
+                                >a {
+                                    background-color: #fff;
+                                    color: @main-color;
+                                }
+                            }
+                            >a {
+                                // a标签要div盒子一样宽
+                                width: 85px;
+                                height: 46px;
+                                display: block;
+                                font-size: 14px; //行高居中对齐
+                                line-height: 46px;
+                                text-align: center;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    } // 右边
+    .category-right {
+        flex: 1; // background-color: red; //内边距
+        padding: 10px; // 记得要加高度
+        height: 100%; // 超出隐藏,防止出现滚动条
+        overflow: hidden;
+        .swiper-container {
+            height: 100%;
+            .swiper-wrapper {
+                height: 100%;
+                .swiper-slide {
+                    height: auto;
+                    #branchList {
+                        .jd-brand {
+                            .title {
+                                >h4 {
+                                    font-size: 14px;
+                                }
+                            }
+                            .content {
+                                padding: 5px;
+                                >ul {
+                                    // 伸缩布局
+                                    display: flex; // 换行
+                                    flex-wrap: wrap;
+                                    >li {
+                                        width: 33.33%;
+                                        margin: 10px 0;
+                                        >a {
+                                            display: block;
+                                            text-align: center;
+                                            >img {
+                                                // 设置宽度
+                                                width: 70px;
+                                            }
+                                            >span {
+                                                display: block;
+                                                font-size: 12px;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

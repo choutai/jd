@@ -1,0 +1,207 @@
+/* 在主页的样式去引入公共的样式文件 */
+
+@import 'base.less';
+body {
+    max-width: 750px; // 居中
+    margin: 0 auto;
+    padding-bottom: 60px;
+}
+
+
+//轮播图样式
+#slide {
+    a {
+        display: block;
+        img {
+            width: 100%;
+        }
+    }
+    /* 修改小圆点样式 */
+    .swiper-pagination-bullet {
+        // 透明
+        background-color: transparent;
+        // 透明度
+        opacity: 1;
+        border: 1px solid #fff;
+        width: 8px;
+        height: 8px;
+        // 内聚
+        box-sizing: border-box;
+    }
+    .swiper-pagination-bullet-active {
+        background-color: #fff;
+    }
+}
+
+//导航栏区域
+#nav {
+    //父元素加padding
+    padding: 10px;
+    >ul {
+        // 伸缩布局
+        display: flex; 
+        //换行
+        flex-wrap: wrap;
+        >li {
+            //改变宽度
+            width: 25%;
+            >a {
+                display: block;
+                text-align: center;
+                >img {
+                    //图片80*80
+                    width: 40px;
+                    height: 40px;
+                }
+                >p {
+                    //兄弟相邻加margin
+                    margin: 5px 0;
+                }
+            }
+        }
+    }
+}
+
+//主体区域
+//掌上秒杀
+#main {
+    padding: 10px;
+    background-color: #f5f5f5; // 掌上秒杀大盒子
+    .seckill {
+        box-shadow: 0px 0px 1px #ccc;
+        background-color: #fff; //标题
+        .title {
+            display: flex;
+            position: relative;
+            line-height: 30px; // 闹钟
+            .naozhong {
+                // 40*50
+                width: 20px;
+                height: 25px;
+                margin-left: 5px;
+                margin-top: 2px;
+            } // 掌上秒杀
+            .name {
+                color: @main-color;
+                margin-left: 5px;
+                font-size: 14px;
+            }
+            .down-time {
+                margin-left: 10px;
+                >span {
+                    // div是块级元素,内容自动地开始一个新行
+                    //所以要转成行内块元素
+                    display: inline-block;
+                    width: 15px;
+                    height: 15px;
+                    line-height: 15px;
+                    background-color: #000;
+                    color: #fff; // span是行内元素
+                    text-align: center;
+                    &:nth-child(3n) {
+                        background-color: #fff;
+                        color: #000;
+                    }
+                }
+            } 
+            // 更多
+            .more {
+                position: absolute;
+                right: 10px;
+                font-size: 14px;
+            }
+        } 
+        //内容
+        .content {
+            padding: 10px 0;
+            >ul {
+                // 伸缩布局
+                display: flex;
+                >li {
+                    // 每个li占一份
+                    flex: 1; 
+                    // 兄弟+下一个兄弟的元素
+                    &+li {
+                        border-left: 1px solid @border-color;
+                    }
+                    >a {
+                        display: block;
+                        text-align: center;
+                        >img {
+                            // 图片宽度220
+                            width: 110px;
+                        }
+                        >p {
+                            font-size: 12px; 
+                            // p标签改字体颜色
+                            &:nth-of-type(1) {
+                                // 变红色
+                                color: @main-color;
+                            }
+                            &:nth-of-type(2) {
+                                // 变灰色
+                                color: @border-color;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+     // 京东超市
+    .seckill-market {
+        margin-top: 10px;
+        background-color: #fff;
+        box-shadow: 0px 0px 1px @border-color;
+        .title {
+            border-bottom: 1px solid @border-color;
+            >h4 {
+                // 不加粗
+                font-weight: normal; 
+                // 文字到边框的距离
+                padding-left: 30px; 
+                // 子绝父相
+                position: relative;
+                // 行高居中
+                line-height: 30px; 
+                // 伪元素
+                &::before {
+                    content: '';
+                    width: 4px;
+                    height: 15px;
+                    position: absolute;
+                    background-color: @main-color;
+                    top: 8px;
+                    left: 11px;
+                }
+            }
+        }
+        .content {
+            // 伸缩布局
+            display: flex;
+            .left {
+                // 各占一份
+                flex: 1;
+                >a {
+                    // 转行内块
+                    display: block;
+                    >img {
+                        // 设置图片自适应
+                        width: 100%;
+                    }
+                }
+            } 
+            // 右边
+            .right {
+                // 占一份
+                flex: 1;
+                >a {
+                    display: block;
+                    >img {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}

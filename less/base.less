@@ -1,0 +1,183 @@
+/* 公共变量 */
+
+@main-color: #e93b3d;
+@border-color: #ccc;
+@a-color: #666;
+
+/* 样式重置 */
+
+* {
+    margin: 0px;
+    padding: 0px;
+    /*在移动端设置盒模型border-box 为了防止元素加边框或者padding出现水平滚动条*/
+    box-sizing: border-box;
+    /* 去除移动端按住元素的时候会出现高亮背景色 */
+    -webkit-tap-highlight-color: transparent;
+    /* 去掉所有移动端内边框 */
+    outline: none;
+}
+
+a {
+    color: @a-color;
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+input {
+    border: 0;
+}
+
+img {
+    /* 解决图片底部3px的间隙 为了让图片的对齐方式和文本一致*/
+    vertical-align: middle;
+}
+
+i {
+    font-style: normal;
+}
+
+
+/* 公共样式 */
+
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}
+
+.clearfix::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+
+/* 公共的图标样式 */
+/* 属性选择器 匹配类名以icon-开头 或者 中间包含了空格icon-的元素 */
+[class^="icon-"],
+[class*=" icon-"] {
+	 /* 公共的精灵图 */
+    background-image: url(../images/sprites.png);
+    /* 设置背景图的大小 图片要缩小一半来写 背景图就设置背景图大小 */
+    background-size: 200px 200px;
+    // 加背景图的定位
+    background-origin: content-box;
+    //加背景图的裁剪(注意:1.有padding 2.要有宽高才可以加)
+    background-clip: content-box;
+}
+
+
+/* 公共的边框 */
+// 上边框
+.border-top {
+    border-top: 1px solid @border-color;
+}
+
+//下边框
+.border-bottom {
+    border-bottom: 1px solid @border-color;
+}
+
+//左边框
+.border-left {
+    border-left: 1px solid @border-color;
+}
+
+//右边框
+.border-right {
+    border-right: 1px solid @border-color;
+}
+
+// 头部样式
+#header {
+    max-width: 750px; // 伸缩布局
+    display: flex;
+    background-color: #ccc;
+    padding: 7px 10px; //固定定位
+    position: fixed; //宽度不能写死
+    width: 100%; //写定位要写top和left
+    top: 0;
+    left: 0; //改变背景色
+    z-index: 999;
+    background-color: rgba(255, 255, 255, 0); // logo
+    .icon-logo {
+        // a是行内元素,所以要转块级元素
+        display: block; 
+        // 图片一半
+        width: 58px;
+        height: 23px;
+         //方向
+        background-position: 0 -110px;
+        margin-top: 3px;
+    } // 表单
+    form {
+        // 占一份
+        flex: 1; 
+        // 子绝父相
+        position: relative;
+        margin-left: 10px; 
+        // 放大镜
+        .icon-search {
+            // 图片一半
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            background-position: -60px -110px;
+            top: 6px;
+            left: 7px;
+        }
+        >input {
+            // 宽度不要写死(缩放)
+            width: 100%; 
+            //高度
+            height: 30px;
+            border-radius: 15px;
+            padding-left: 30px;
+        }
+    }
+    .login {
+        //不用写高
+        text-align: center; 
+        //宽度
+        width: 60px; 
+        //行高
+        line-height: 30px;
+        color: #fff;
+    }
+}
+
+// 页尾
+#footer {
+    // 宽度自适应
+    width: 100%; 
+    // 固定定位
+    position: fixed;
+    bottom: 0px;
+    background-color: #fff; 
+    //提升层级
+    z-index: 999; 
+    //给一个最大宽度
+    max-width: 750px;
+    >ul {
+        // 伸缩布局
+        display: flex;
+        >li {
+            //给占一份
+            flex: 1;
+            >a {
+                display: block;
+                text-align: center;
+                >img {
+                    // 图片宽度130
+                    width: 65px;
+                    height: 50px;
+                }
+            }
+        }
+    }
+}
